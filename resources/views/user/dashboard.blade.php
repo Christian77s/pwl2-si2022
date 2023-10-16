@@ -1,4 +1,4 @@
-    @extends('_layout.app')
+    @extends('_layouts.app')
     @section('content')
 
         <section class="dashboard my-5">
