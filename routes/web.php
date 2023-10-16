@@ -18,7 +18,7 @@ Route::get('/', function () {
 });
 Route::get('login', function () {
     return view('auth.user.login');
-});
+})->name('login');
 Route::get('dashboard', function () {
     return view('user.dashboard');
 })->name('dashboard');
@@ -26,5 +26,5 @@ Route::get('checkout/success', function () {
     return view('checkout.success');
 });
 Route::get('checkout/{camp}', function () {
-    return view('welcome');
+    return view('checkout.create');
 });
