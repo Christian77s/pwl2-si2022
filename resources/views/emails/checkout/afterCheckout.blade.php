@@ -1,12 +1,16 @@
-<x-mail::message>
-# Introduction
+@component('mail::message')
+# Register Camp: {{$checkout->camp->title}}
 
-The body of your message.
+Hi {{$checkout->user->name}}
+<br>Thankyou for register on <b>{{$checkout->camp->title}}</b>
+please see payment instruction by click the button below!
 
-<x-mail::button :url="''">
-Button Text
-</x-mail::button>
+@component('mail::button', ['url' => route('user.checkout.invoice', $checkout->id)])
+Login Here 
+@endcomponent
 
 Thanks,<br>
-{{ config('app.name') }}
-</x-mail::message>
+{{ config('app.name')}}
+@endcomponent
+
+

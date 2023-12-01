@@ -58,7 +58,7 @@
                                 <div class="mb-4">
                                     <label class="form-label">Occupation</label>
                                     <input name="occupation" type="text" class="form-control  {{$errors->has('name')?'is-invalid':''}}" 
-                                    value="{{@Auth::user()->email}}"
+                                    value="{{old('occupation')?:@Auth::user()->occupation}}"
                                     aria-describedby="occupationCheckout" required> 
                                     @if($errors->has('occupation'))
                                     <p class="text-danger">{{$errors->first('occupation')}}</p>
@@ -66,10 +66,13 @@
                                 </div>
                                 <div class="mb-4">
                                     <label class="form-label">Card Number</label>
-                                    <input name="card_number" type="number" class="form-control {{$errors->has('card_number')?'is-invalid':''}}""  
-                                    aria-describedby="cardNumberCheckout" required> 
+                                    <input name="card_number" type="number" class="form-control {{$errors->has('card_number')?'is-invalid':''}}"
+                                    value="{{old('card_number')?:''}}"  
+                                    aria-describedby="cardNumberCheckout" 
+                                    oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
+                                    maxlength="16" required>
                                     @if($errors->has('card_number'))
-                                    <p class="text-danger">{{$errors->first('occupation')}}</p>
+                                    <p class="text-danger">{{$errors->first('card_number')}}</p>
                                     @endif
                                 </div>
                                 <div class="mb-5">
@@ -78,19 +81,20 @@
                                             <label class="form-label">Expired</label>
                                             <input name="expired" type="month" class="form-control"
                                             value="{{old('expired')?:''}}"
-                                            aria-describedby="expiredCheckout" required>  
+                                            aria-describedby="expiredCheckout" required>
                                             @if($errors->has('expired'))
                                              <p class="text-danger">{{$errors->first('expired')}}</p>
-                                             @endif
+                                            @endif
                                         </div>
                                         <div class="col-lg-6 col-12">
                                             <label class="form-label">CVC</label>
-                                            <input name="cvc" type="number" class="form-control" 
+                                            <input name="cvc" type="number" class="form-control"
+                                            value="{{old(card_number)?:''}}"
                                             aria-describedby="cvcCheckout"
-                                            oninput="javascript: if (this.value.length > this.maxlength) this.value = this.value.slice(0, this.maxlength)"
+                                            oninput="javascript: if (this.value.length > this.maxlength) this.value = this.value.slice(0, this.maxlength)" 
                                             maxlength="3" required>
                                             @if($errors->has('cvc'))
-                                            <p class="text-danger">{{$errors->first('expired')}}</p>
+                                            <p class="text-danger">{{$errors->first('cvc')}}</p>
                                             @endif
                                         </div>
                                     </div>

@@ -1,12 +1,16 @@
-<x-mail::message>
-# Introduction
+@component('mail::message')
+# Welcome! 
 
-The body of your message.
+Hi {{$user->name}}
+<br>Welcome to Laracamp,
+your account has been created successfully.
+Now you can choose your best match camp! 
 
-<x-mail::button :url="''">
-Button Text
-</x-mail::button>
+@component('mail::button', ['url' => route('login')])
+Login Here 
+@endcomponent
 
-Thanks,<br>
+Thanks, <br>
 {{ config('app.name') }}
-</x-mail::message>
+@endcomponent
+

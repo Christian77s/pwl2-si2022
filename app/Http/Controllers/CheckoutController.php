@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Routing\Controller as BaseController;
-use App\Http\Request\User\Checkout\Store;
+use App\Http\Requests\User\Checkout\Store;
 use App\Models\Checkout;
 use App\Models\Camp;
 use App\Models\User;
