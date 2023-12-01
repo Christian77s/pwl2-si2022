@@ -67,7 +67,7 @@
                                 <div class="mb-4">
                                     <label class="form-label">Card Number</label>
                                     <input name="card_number" type="number" class="form-control {{$errors->has('card_number')?'is-invalid':''}}"
-                                    value="{{old('card_number')?:''}}"  
+                                    value="{{old('card_number')?:''}}" 
                                     aria-describedby="cardNumberCheckout" 
                                     oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
                                     maxlength="16" required>
@@ -89,7 +89,7 @@
                                         <div class="col-lg-6 col-12">
                                             <label class="form-label">CVC</label>
                                             <input name="cvc" type="number" class="form-control"
-                                            value="{{old(card_number)?:''}}"
+                                            value="{{old('cvc')?:''}}"
                                             aria-describedby="cvcCheckout"
                                             oninput="javascript: if (this.value.length > this.maxlength) this.value = this.value.slice(0, this.maxlength)" 
                                             maxlength="3" required>
