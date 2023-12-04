@@ -70,7 +70,7 @@
                                     value="{{old('card_number')?:''}}" 
                                     aria-describedby="cardNumberCheckout" 
                                     oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
-                                    maxlength="16" required>
+                                    maxlength= "16" required>
                                     @if($errors->has('card_number'))
                                     <p class="text-danger">{{$errors->first('card_number')}}</p>
                                     @endif

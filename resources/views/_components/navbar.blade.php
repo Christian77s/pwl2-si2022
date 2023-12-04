@@ -1,4 +1,4 @@
-    <nav class="navbar navbar-expand-lg navbar-light">
+<nav class="navbar navbar-expand-lg navbar-light">
         <div class="container">
             <a class="navbar-brand" href="#">
                 <img src="{{asset('images/logo.png')}}" alt="">
@@ -21,27 +21,31 @@
                         <a class="nav-link" href="#">Business</a>
                     </li>
                 </ul>
-                @auth
+            @auth 
                 <div class="d-flex user-logged nav-item dropdown no-arrow">
-                    <a href="#" role="button" data-toggle="dropdown" aria-expanded="false" id="dropdownMenuLink">
+                    <a href="#" role="button" class="dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false" id="dropdownMenuLink">
                         Halo, {{Auth::user()->name}}!
-                        <img src="{{Auth::user()->avatar}}" class="user-photo" alt="">
-                        <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink" style="right:0; left:auto">
+                        @if(Auth::user()->avatar)
+                            <image src="{{ Auth::user()->avatar }}" class="user-photo" alt="user's avatar">
+                        @else
+                            <image src="https://ui-avatars.com/api?name=Admin" class="user-photo" alt="admin's avatar">
+                        @endif
+                    </a>
+                        <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink" style="right:0, left:auto">
                             <li>
                                 <a href="#" class="dropdown-item">My Dashboard</a>
                             </li>
                             <li>
-                                <a href="#" class="dropdown-item" onclick="event.preventDefault(); document.getElementById('logout-form').sublit()">Sign Out</a>
-                                <form method="post" action="[[route('logout)}}" style="display:none" id="logout form">
+                                <a href="#" class="dropdown-item" onclick="event.preventDefault(); document.getElementById('logout-form').submit()">Sign Out</a>
+                                <form method="get" action="{{route('logout')}}" style="display:none" id="logout-form">
                                     <input type="hidden" name="token" value="{{csrf_token()}}">
                                 </form>
                             </li>
                         </ul>
-                    </a>
                 </div>
-                @else
+            @else
                 <div class="d-flex">
-                    <a href="#" class="btn btn-master btn-secondary me-3">
+                    <a href="{{url('/login')}}" class="btn btn-master btn-secondary me-3">
                         Sign In
                     </a>
                     <a href="#" class="btn btn-master btn-primary">

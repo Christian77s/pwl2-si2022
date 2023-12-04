@@ -11,14 +11,16 @@ use App\Models\Camp;
 use App\Models\User;
 use Auth;
 use Mail;
+use App\Mail\Checkout\AfterCheckout;
 
 class CheckoutController extends Controller
 {
-    public function create(Camp $camp)
+    public function create(Request $request, Camp $camp)
     {
-        return view('checkout.create', [
-            "camp"=>$camp
-        ]);
+        if($camp->isRegistered){
+            $request->session()->flash('error', "You already registered on {$camp->title} camp.");
+            return redirect(route('user.dashboard'));
+        }
     }
 
     public function store(Store $request, Camp $camp)

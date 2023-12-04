@@ -9,6 +9,7 @@ use Auth;
 use Mail;
 use App\Mail\User\AfterRegister;
 
+
 class UserController extends Controller
 {
     public function login()
