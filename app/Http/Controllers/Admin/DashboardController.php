@@ -9,5 +9,11 @@ use Auth;
 
 class DashboardController extends Controller
 {
-    //
+    public function index()
+    {
+        $checkout = Checkout::with('camp')->get();
+        return view ('admin.dashboard',[
+            "checkout" =>$checkout
+        ]);
+    }
 }

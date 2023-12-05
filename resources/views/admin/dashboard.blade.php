@@ -1,22 +1,24 @@
-@extends('_layout.app')
+@extends('_layouts.app')
 @section('content')
     <div class="container-fluid mt-5">
         <div class="row">
             <div class="col-10 offset-1">
                 <div class="card">
-                    <div class="card-header">
+                    <div class="card-reader">
                         My Camps
                     </div>
                     <div class="card-body">
                         @include('_components.alert')
                         <table class="table table-striped">
                             <thead>
-                                <th>User</th>
-                                <th>Camp</th>
-                                <th>Price</th>
-                                <th>Register Data</th>
-                                <th>Paid Status</th>
-                                <th>Action</th>
+                                <tr>
+                                    <th>User</th>
+                                    <th>Camp</th>
+                                    <th>Price</th>
+                                    <th>Register Data</th>
+                                    <th>Paid Status</th>
+                                    <!-- <th>Action</th> -->
+                                </tr>
                             </thead>
                             <tbody>
                                 @forelse($checkouts as $checkout)
@@ -25,27 +27,28 @@
                                     <td>{{$checkout->camp->title}}</td>
                                     <td>Rp. {{$checkout->camp->price}}</td>
                                     <td>{{$checkout->created_at->format('M d Y')}}</td>
+                                    <td>{{$checkout->payment_status}}</td>
                                     <td>
                                         @if ($checkout->is_paid)
                                         <span class="badge bg-success">Paid</span>
-                                        @else 
+                                        @else
                                         <span class="badge bg-warning">Waiting</span>
                                         @endif
                                     </td>
                                     <td>
                                         @if(!$checkout->is_paid)
-                                        <form method="post"action="{{route('admin.checkout.update' ,$checkout->id)}}">
-                                            @csrf
+                                        <form method="post" action="{{route('admin.checkout.update',$checkout->id)}}">    
+                                        @csrf 
                                             <button type="submit" class="btn btn-primary btn-sm">
-                                                Set To Paid 
-                                        </div>
+                                                Set to Paid
+                                            </button>
                                         </form>
                                         @endif
                                     </td>
                                 </tr>
                                 @empty
                                 <tr>
-                                    <td colspan="3">No camps registered</td>
+                                    <td colspan="5">No camps registered</td>
                                 </tr>
                                 @endforelse
                             </tbody>
@@ -55,4 +58,4 @@
             </div>
         </div>
     </div>
-    @endsection
+@endsection

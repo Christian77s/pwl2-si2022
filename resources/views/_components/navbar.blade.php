@@ -37,6 +37,7 @@
                             </li>
                             <li>
                                 <a href="#" class="dropdown-item" onclick="event.preventDefault(); document.getElementById('logout-form').submit()">Sign Out</a>
+                                
                                 <form method="get" action="{{route('logout')}}" style="display:none" id="logout-form">
                                     <input type="hidden" name="token" value="{{csrf_token()}}">
                                 </form>
