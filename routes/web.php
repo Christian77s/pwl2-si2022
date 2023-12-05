@@ -42,8 +42,8 @@ Route::middleware('auth')->group(function () {
         Route::get('/', [UserDashboard::class, 'index'])->name('dashboard');
     });
     Route::prefix('admin/dashboard')->namespace('Admin')->name('admin.')->middleware('ensureUserRole:admin')->group(function(){
-        Route::get('/', [AdminDashboard::class, 'index'])->name('dashboard');
-        Route::post('checkout/{checkout}', [AdminCheckout::class, 'update'])->name('checkout.update');
+        Route::get('/', [AdminDashboard::class, 'index'])->name('dashboard');// called by route ('admin.dashboard)
+        Route::post('checkout/{checkout}', [AdminCheckout::class, 'update'])->name('checkout.update');// called by route ('admin.checkout.update)
     });
 });
 

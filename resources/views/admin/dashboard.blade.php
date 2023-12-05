@@ -21,7 +21,7 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @forelse($checkouts as $checkout)
+                                @forelse($checkout as $checkout)
                                 <tr>
                                     <td>{{$checkout->user->name}}</td>
                                     <td>{{$checkout->camp->title}}</td>

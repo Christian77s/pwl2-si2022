@@ -5,8 +5,8 @@ namespace App\Mail\Checkout;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
-use Illuminate\Mail\Mailables\Content;
-use Illuminate\Mail\Mailables\Envelope;
+// use Illuminate\Mail\Mailables\Content;
+// use Illuminate\Mail\Mailables\Envelope;
 use Illuminate\Queue\SerializesModels;
 
 class Paid extends Mailable
@@ -24,7 +24,8 @@ class Paid extends Mailable
     /**
      * Get the message envelope.
      */
-    public function build(){
+    public function build()
+    {
         return $this->subject('Your Transaction Has Been Confirmed')
         ->markdown('emails.checkout.paid', [
             'checkout' => $this->checkout

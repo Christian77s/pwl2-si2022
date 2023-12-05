@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Checkout;
+use Mail;
+use\App\Mail\Checkout\Paid;
 
 class CheckoutController extends Controller
 {
