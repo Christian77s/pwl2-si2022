@@ -16,7 +16,6 @@
                 @include('_components.alert')
                 <table class="table">
                     <tbody>
-                        @foreach($checkout as $checkout)
                         <tr class="align-middle">
                             <td width="18%">
                                 <img src="{{asset('images/item_bootcamp.png')}}" height="120" alt="">

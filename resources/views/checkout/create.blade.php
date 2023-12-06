@@ -48,7 +48,7 @@
                                 </div>
                                 <div class="mb-4">
                                     <label class="form-label">Email Address</label>
-                                    <input name="email" type="email" class="form-control  {{$errors->has('name')?'is-invalid':''}}"  
+                                    <input name="email" type="email" class="form-control  {{$errors->has('email')?'is-invalid':''}}"  
                                     value="{{@Auth::user()->email}}"
                                     aria-describedby="emailCheckout" required> 
                                     @if($errors->has('email'))
@@ -57,7 +57,7 @@
                                 </div>
                                 <div class="mb-4">
                                     <label class="form-label">Occupation</label>
-                                    <input name="occupation" type="text" class="form-control  {{$errors->has('name')?'is-invalid':''}}" 
+                                    <input name="occupation" type="text" class="form-control  {{$errors->has('occupation')?'is-invalid':''}}" 
                                     value="{{old('occupation')?:@Auth::user()->occupation}}"
                                     aria-describedby="occupationCheckout" required> 
                                     @if($errors->has('occupation'))
