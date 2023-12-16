@@ -30,12 +30,12 @@ class UserController extends Controller
         ];
 
         //return $data;
-        // $user = User::firstOrCreate(['email' => $data['email']], $data);
+        $user = User::firstOrCreate(['email' => $data['email']], $data);
         $user = User::whereEmail($data['email'])->first();
-        if (!user) {
-            $user = User::create ($data);
-            Mail::to($user->email)->send(new AfterRegister($user));
-        }
+        // if (!user) {
+        //     $user = User::create ($data);
+        //     Mail::to($user->email)->send(new AfterRegister($user));
+        // }
         Auth::login($user, true);
 
         return redirect(route('dashboard'));
